@@ -18,19 +18,21 @@ import axios from "axios"
         name : "LoginComp",
         data() {
             return {
-                pin : ""
+                username : "",
+                password : ""
             }
         },
         methods: {
             login(){
                 axios.request({
-                    url: process.env.VUE_APP_BASE_DOMAIN+"api/login",
+                    url: process.env.VUE_APP_BASE_DOMAIN+"/api/login",
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     data: {
-                        "userPin" : this.pin
+                        "username" : this.username,
+                        "password" : this.password
                     }
                 }).then((response) => {
                     console.log("Success");
@@ -40,7 +42,8 @@ import axios from "axios"
                     // cookies.set('userLoggedinId', response.data.userId);
                 }).catch((error) => {
                     console.log("Failed");
-                    console.log(this.pin);
+                    console.log(this.username);
+                    console.log(this.password);
                     console.log(error.response);
                 })
             }
