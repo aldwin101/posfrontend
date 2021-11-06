@@ -3,17 +3,17 @@
         <div id="loginContainer">
             <input type="text" v-model="username">
             <input type="password" v-model="password">
-            <button type="submit" @click="login">Submit</button>
+            <button type="submit" @click="login">Login</button>
         </div>
         <div id="logoContainer">
-            <img src="@/assets/POSLogo.png" alt="logo">
+            <img src="../assets/POSLogo.png" alt="logo">
         </div>
     </div>
 </template>
 
 <script>
 import axios from "axios"
-// import cookies from "vue-cookies"
+import cookies from "vue-cookies"
     export default {
         name : "LoginComp",
         data() {
@@ -38,8 +38,9 @@ import axios from "axios"
                     console.log("Success");
                     console.log(response.data.loginToken);
                     console.log(response.data.userId);
-                    // cookies.set('token', response.data.loginToken);
-                    // cookies.set('userLoggedinId', response.data.userId);
+                    this.$router.push({name: 'Table'});
+                    cookies.set('token', response.data.loginToken);
+                    cookies.set('userLoggedinId', response.data.userId);
                 }).catch((error) => {
                     console.log("Failed");
                     console.log(this.username);

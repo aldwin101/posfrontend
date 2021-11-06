@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import Menu from '../views/Menu.vue'
+import Table from '../views/Table.vue'
 
 Vue.use(VueRouter)
 
@@ -10,6 +11,11 @@ const routes = [
     path: '/',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/table',
+    name: 'Table',
+    component: Table
   },
   {
     path: '/menu',
