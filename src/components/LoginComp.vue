@@ -35,17 +35,11 @@ import cookies from "vue-cookies"
                         "password" : this.password
                     }
                 }).then((response) => {
-                    console.log("Success");
-                    console.log(response.data.loginToken);
-                    console.log(response.data.userId);
                     this.$router.push({name: 'Table'});
                     cookies.set('token', response.data.loginToken);
                     cookies.set('userLoggedinId', response.data.userId);
-                }).catch((error) => {
-                    console.log("Failed");
-                    console.log(this.username);
-                    console.log(this.password);
-                    console.log(error.response);
+                }).catch(() => {
+                    console.log("Invalid password");
                 })
             }
         }

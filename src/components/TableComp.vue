@@ -1,74 +1,62 @@
 <template>
     <div id="container">
-        <div class="tableContainer">
-            <h1>Table 1</h1>
+        <div id="logoutContainer">
+            <LogoutComp />
         </div>
-        <div class="tableContainer">
-            <h1>Table 2</h1>
-        </div>
-        <div class="tableContainer">
-            <h1>Table 3</h1>
-        </div>
-        <div class="tableContainer">
-            <h1>Table 4</h1>
-        </div>
-        <div class="tableContainer">
-            <h1>Table 5</h1>
-        </div>
-        <div class="tableContainer">
-            <h1>Table 6</h1>
-        </div>
-        <div class="tableContainer">
-            <h1>Table 7</h1>
-        </div>
-        <div class="tableContainer">
-            <h1>Table 8</h1>
-        </div>
-        <div class="tableContainer">
-            <h1>Table 9</h1>
-        </div>
-        <div class="tableContainer">
-            <h1>Table 10</h1>
-        </div>
-        <div class="tableContainer">
-            <h1>Table 11</h1>
-        </div>
-        <div class="tableContainer">
-            <h1>Table 12</h1>
+        <div id="buttonContainer">
+            <button @click="goToOrder">Table 1</button>
+            <button @click="goToOrder">Table 2</button>
+            <button @click="goToOrder">Table 3</button>
+            <button @click="goToOrder">Table 4</button>
+            <button @click="goToOrder">Table 5</button>
+            <button @click="goToOrder">Table 6</button>
+            <button @click="goToOrder">Table 7</button>
+            <button @click="goToOrder">Table 8</button>
+            <button @click="goToOrder">Table 9</button>
+            <button @click="goToOrder">Table 10</button>
+            <button @click="goToOrder">Table 11</button>
+            <button @click="goToOrder">Table 12</button>
         </div>
     </div>
 </template>
 
 <script>
+    import LogoutComp from './LogoutComp.vue'
     export default {
         name : 'TableComp',
+        components: {
+            LogoutComp
+        },
+        methods: {
+            goToOrder() {
+                this.$router.push('Order');
+            }
+        },
     }
 </script>
 
 <style scoped>
 #container {
-    margin: 0 20vw 0 20vw;
-    gap: 2vw;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    height: 100vh;
+    grid-template-rows: repeat(2, fit-content());
     justify-items: center;
     align-items: center;
 }
-.tableContainer {
+
+#buttonContainer {
+    margin-top: 5vh;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2vh;
+}
+
+button {
     background-color: rgb(57, 104, 145);
     border-radius: 5vw;
     width: 20vw;
-    height: 15vh;
-    text-align: center;
-    display: table;
+    height: 14vh;
+    color: rgb(240, 248, 255);
+    font-size: 2vw;
 }
-h1 {
-    display: table-cell;
-    vertical-align: middle;
-    color: #f0f8ff;
-    background-color: transparent;
-}
-
 </style>
